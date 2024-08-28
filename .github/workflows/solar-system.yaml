@@ -19,6 +19,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
+          
+      - name: Set up environment variables
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
            
       - name: Install dependencies
         run: npm install

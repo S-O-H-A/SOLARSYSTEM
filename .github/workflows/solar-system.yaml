@@ -11,7 +11,8 @@ jobs:
   unit-testing:
     name: Unit testing
     runs-on: ubuntu-latest
-    
+    env:  # Set environment variable at the job level
+      MONGO_URI: ${{ secrets.MONGO_URI }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -20,11 +21,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          
-      - name: Set up environment variables
-        env:
-          MONGO_URI: ${{ secrets.MONGO_URI }}
-           
+
       - name: Install dependencies
         run: npm install
           
